@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/alexey2d/TestHelloWorld.svg?branch=master)](https://travis-ci.org/alexey2d/TestHelloWorld)
+[![Coverage Status](https://coveralls.io/repos/github/alexey2d/TestHelloWorld/badge.svg?branch=master)](https://coveralls.io/github/alexey2d/TestHelloWorld?branch=master)
 
 Написать консольное приложение на java, с использованием maven.
 Приложение должно выводить на экран приветственное сообщение, в зависимости от текущего времени суток.
