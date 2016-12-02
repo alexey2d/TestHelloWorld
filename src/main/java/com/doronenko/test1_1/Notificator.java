@@ -54,10 +54,9 @@ public class Notificator {
         log.trace("Exit from public void setTime(String timeString)");
     }
 
-    //    по параметру
-    // не присваивается значение внутренней переменной
     /**
-     * Gets part of a day by time
+     * Gets part of a day by time.
+     * Don't set class variable time.
      * @param timeString
      * @return String
      * @throws ParseException
@@ -70,18 +69,18 @@ public class Notificator {
         Date intervalStart;
         Date intervalFinish;
 
-        log.trace("Enter into for (TimeRanges tr : com.doronenko.test1_1.TimeRanges.values())");
+        log.trace("Enter into for (TimeRanges tr : TimeRanges.values())");
         for (TimeRanges tr : TimeRanges.values()) {
             intervalStart = dateFormat.parse(tr.getStartTime());
             intervalFinish = dateFormat.parse(tr.getEndTime());
 
             if(
                     (intervalStart.before(intervalFinish) && time.after(intervalStart) && time.before(intervalFinish))
-                        || /** под интервал, где происходит переход через 00:00:00 отдельное условие **/
+                        || /** if timeRange pass 0:00 am another condition **/
                     (intervalStart.after(intervalFinish) && (time.after(intervalStart) || time.before(intervalFinish))) // ночь
                ) {
-                log.debug("TimeRange found: " + tr.getName());
-                log.trace("Exit from for (TimeRanges tr : com.doronenko.test1_1.TimeRanges.values())");
+                log.debug("TimeRange found: " + tr.getName() + " for: " + timeString);
+                log.trace("Exit from for (TimeRanges tr : TimeRanges.values())");
                 return tr.getName();
             }
         }
@@ -90,7 +89,6 @@ public class Notificator {
         return null;
     }
 
-//    возвратить значение внутренней переменной
     /**
      * Gets part of a day by time from inner variable "time"
      * @return String

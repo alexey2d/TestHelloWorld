@@ -19,6 +19,7 @@ public class HelloWorldApp {
 
     public static void main(String[] args) throws ParseException {
         log.debug("HelloWorldApp started.");
+        log.trace("With param: " + args);
 
         Locale.getDefault();
         log.trace("Getting resources.");
@@ -31,7 +32,7 @@ public class HelloWorldApp {
             System.out.println(resourceBundle.getString(message));
         } catch (NullPointerException e) {
             log.error("Null result for time range", e);
-            e.printStackTrace();
+            System.out.println("No time range found.");
         }
 
         log.debug("HelloWorldApp finished.");

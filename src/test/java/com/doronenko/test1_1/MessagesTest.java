@@ -24,8 +24,11 @@ public class MessagesTest {
     public MessagesTest() {
     }
 
+    /**
+     * Test enum TimeRanges values presents in resources
+     */
     @Test
-    public void getMessages(){
+    public void testResourceProperties(){
         Enumeration<String> messagesKeys;
 
         for (TimeRanges tr : TimeRanges.values()) {

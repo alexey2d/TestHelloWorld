@@ -19,46 +19,50 @@ public class NotificatorTest {
     }
 
     @Test
-    public void getMorning1() throws Exception {
+    public void testMorningEvent7am0000() throws Exception {
         assertThat("morning", equalTo(notificator.notificate("07:00:00")));
     }
 
     @Test
-    public void getMorning2() throws Exception {
+    public void testMorningEvent8am5959() throws Exception {
         assertThat("morning", equalTo(notificator.notificate("08:59:59")));
     }
 
     @Test
-    public void getDay1() throws Exception {
+    public void testDayEvent9am5959() throws Exception {
         assertThat("day", equalTo(notificator.notificate("09:59:59")));
     }
 
     @Test
-    public void getDay2() throws Exception {
+    public void testDayEvent6pn5900() throws Exception {
         assertThat("day", equalTo(notificator.notificate("18:59:00")));
     }
 
     @Test
-    public void getEvening1() throws Exception {
+    public void testEveningEvent7pm0159() throws Exception {
         assertThat("evening", equalTo(notificator.notificate("19:01:59")));
     }
 
     @Test
-    public void getEvening2() throws Exception {
+    public void testEveningEvent10pm5959() throws Exception {
         assertThat("evening", equalTo(notificator.notificate("22:59:59")));
     }
 
     @Test
-    public void getNight1() throws Exception {
+    public void testNightEvent11pn0100() throws Exception {
         assertThat("night", equalTo(notificator.notificate("23:01:00")));
     }
 
     @Test
-    public void getNight2() throws Exception {
+    public void testNightEvent5am5500() throws Exception {
         assertThat("night", equalTo(notificator.notificate("05:55:00")));
     }
 
-
+    @Test
+    public void testNotificatorSetter() throws Exception {
+        notificator.setTime("13:00:00");
+        assertThat("day", equalTo(notificator.notificate()));
+    }
 
 
 }
