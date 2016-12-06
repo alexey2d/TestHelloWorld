@@ -1,11 +1,13 @@
 package com.doronenko.test1_1;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Enumeration;
 import java.util.Locale;
 import java.util.ResourceBundle;
+
 import static junit.framework.TestCase.assertEquals;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -40,7 +42,7 @@ public class MessagesTest {
                     break;
                 }
             }
-            assertEquals("In resource file less messages that need.", true, exist);
+            assertEquals("No message found for " + tr.getName(), true, exist);
         }
     }
     
@@ -59,36 +61,36 @@ public class MessagesTest {
     @Test
     public void getMessageEveningRU(){
         resourceBundle = ResourceBundle.getBundle("message/messages", Locale.forLanguageTag("RU"));
-        assertThat(resourceBundle.getString("evening"), is("Добрый вечер, мир!"));
+        assertThat("Добрый вечер, мир!", equalTo(resourceBundle.getString("evening")));
     }
 
     @Test
     public void getMessageNightRU(){
         resourceBundle = ResourceBundle.getBundle("message/messages", Locale.forLanguageTag("RU"));
-        assertThat(resourceBundle.getString("night"), is("Доброй ночи, мир!"));
+        assertThat("Доброй ночи, мир!", equalTo(resourceBundle.getString("night")));
     }
 
     @Test
     public void getMessageMorningEN(){
         resourceBundle = ResourceBundle.getBundle("message/messages", Locale.US);
-        assertThat(resourceBundle.getString("morning"), is("Good morning, World!"));
+        assertThat("Good morning, World!", equalTo(resourceBundle.getString("morning")));
     }
 
     @Test
     public void getMessageDayEN(){
         resourceBundle = ResourceBundle.getBundle("message/messages", Locale.US);
-        assertThat(resourceBundle.getString("day"), is("Good day, World!"));
+        assertThat("Good day, World!", equalTo(resourceBundle.getString("day")));
     }
     @Test
     public void getMessageEveningEN(){
         resourceBundle = ResourceBundle.getBundle("message/messages", Locale.US);
-        assertThat(resourceBundle.getString("evening"), is("Good evening, World!"));
+        assertThat("Good evening, World!", equalTo(resourceBundle.getString("evening")));
     }
 
     @Test
     public void getMessageNightEN(){
         resourceBundle = ResourceBundle.getBundle("message/messages", Locale.US);
-        assertThat(resourceBundle.getString("night"), is("Good night, World!"));
+        assertThat("Good night, World!", equalTo(resourceBundle.getString("night")));
     }
 
 }

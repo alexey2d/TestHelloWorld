@@ -6,44 +6,44 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
-* Class {@link com.doronenko.test1_1.Notificator}
+* Class {@link Notifier}
 *
 * @author Alexey Doronenko
 * @version 1.0
 * @since 11/29/2016.
 **/
 
-public class Notificator {
-    private static final Logger log = Logger.getLogger(Notificator.class);
+public class Notifier {
+    private static final Logger log = Logger.getLogger(Notifier.class);
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
     private Date time;
 
     /**
-     * Sets time variable for Notificator class from parameter
+     * Sets time variable for Notifier class from parameter
      * @param timeString
      * @throws ParseException
      */
-    public Notificator(String timeString) throws ParseException {
-        log.trace("Enter into Notificator(String timeString)");
+    public Notifier(String timeString) throws ParseException {
+        log.trace("Enter into Notifier(String timeString)");
         setTime(timeString);
-        log.trace("Exit from Notificator(String timeString)");
+        log.trace("Exit from Notifier(String timeString)");
     }
 
     /**
-     * Sets time variable for Notificator class. Gets current time
+     * Sets time variable for Notifier class. Gets current time
      * @throws ParseException
      */
-    public Notificator() throws ParseException {
-        log.trace("Enter into public Notificator()");
+    public Notifier() throws ParseException {
+        log.trace("Enter into public Notifier()");
         Date now = new Date();
-        log.trace("public Notificator() with param: " + dateFormat.format(now));
+        log.trace("public Notifier() with param: " + dateFormat.format(now));
         setTime(dateFormat.format(now));
-        log.trace("Exit from public Notificator()");
+        log.trace("Exit from public Notifier()");
     }
 
     /**
-     * Sets time variable for Notificator class
+     * Sets time variable for Notifier class
      * @param timeString
      * @throws ParseException
      */
@@ -60,8 +60,8 @@ public class Notificator {
      * @return String
      * @throws ParseException
      */
-    public String notificate(String timeString) throws ParseException {
-        log.trace("Enter into public String notificate(String timeString) with timeString: " + timeString);
+    public String inform(String timeString) throws ParseException {
+        log.trace("Enter into public String inform(String timeString) with timeString: " + timeString);
         Date time;
         time = dateFormat.parse(timeString);
 
@@ -74,17 +74,19 @@ public class Notificator {
             intervalFinish = dateFormat.parse(tr.getEndTime());
 
             if(
-                    (intervalStart.before(intervalFinish) && time.after(intervalStart) && time.before(intervalFinish))
+                    (intervalStart.before(intervalFinish) &&
+                            (time.compareTo(intervalStart) > 0) && (time.compareTo(intervalFinish) <= 0))
                         || /** if timeRange pass 0:00 am another condition **/
-                    (intervalStart.after(intervalFinish) && (time.after(intervalStart) || time.before(intervalFinish)))
+                    (intervalStart.after(intervalFinish) &&
+                            ((time.compareTo(intervalStart) > 0) || time.compareTo(intervalFinish) <= 0))
                ) {
-                log.debug("TimeRange found: " + tr.getName() + " for: " + timeString);
+                log.debug("TimeRange found: " + tr.getName() + " for " + timeString);
                 log.trace("Exit from for (TimeRanges tr : TimeRanges.values())");
                 return tr.getName();
             }
         }
 
-        log.warn("Exit from public String notificate(String timeString) with null result");
+        log.warn("Exit from public String inform(String timeString) with null result");
         return null;
     }
 
@@ -93,10 +95,10 @@ public class Notificator {
      * @return String
      * @throws ParseException
      */
-    public String notificate() throws ParseException {
-        log.trace("Enter into public String notificate(). Using saved time: " + dateFormat.format(time));
-        String message = notificate(dateFormat.format(time));
-        log.trace("Exit from  public String notificate()");
+    public String inform() throws ParseException {
+        log.trace("Enter into public String inform(). Using saved time: " + dateFormat.format(time));
+        String message = inform(dateFormat.format(time));
+        log.trace("Exit from  public String inform()");
         return message;
     }
 }
