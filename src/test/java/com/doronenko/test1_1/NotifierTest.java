@@ -7,11 +7,11 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
-* Class {@link NotifierTest}
+* Class {@link com.doronenko.test1_1.NotifierTest}
 *
 * @author Alexey Doronenko
 * @version 1.0
-* @since 11/29/2016.
+* @since 12/06/2016.
 */
 public class NotifierTest {
     Notifier notifier = new Notifier();
@@ -57,12 +57,6 @@ public class NotifierTest {
     @Test
     public void testNightEvent5am5500() throws Exception {
         assertThat(notifier.inform("05:55:00"), is("night"));
-    }
-
-    @Test
-    public void testNotifierSetter() throws Exception {
-        notifier.setTime("13:00:00");
-        assertThat(notifier.inform(), is("day"));
     }
 
     @Test

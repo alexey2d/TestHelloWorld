@@ -2,6 +2,7 @@ package com.doronenko.test1_1;
 
 import org.apache.log4j.Logger;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -12,7 +13,7 @@ import java.util.ResourceBundle;
  *
  * @author Alexey Doronenko
  * @version 1.0
- * @since 11/29/2016.
+ * @since 12/06/2016.
  */
 public class HelloWorldApp {
     final static Logger log = Logger.getLogger(HelloWorldApp.class);
@@ -26,14 +27,10 @@ public class HelloWorldApp {
         ResourceBundle resourceBundle = ResourceBundle.getBundle("message/messages");
 
         log.trace("Getting current time range");
-        String message = new Notifier().inform();
+        Date time = new Date();
+        String message = new Notifier().inform(Notifier.dateFormat.format(time));
 
-        try {
-            System.out.println(resourceBundle.getString(message));
-        } catch (NullPointerException e) {
-            log.error("Null result for time range", e);
-            System.out.println("No time range found.");
-        }
+        System.out.println(resourceBundle.getString(message));
 
         log.debug("HelloWorldApp finished.");
     }
