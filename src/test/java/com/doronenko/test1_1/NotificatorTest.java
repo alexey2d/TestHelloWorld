@@ -3,6 +3,7 @@ package com.doronenko.test1_1;
 import org.junit.Test;
 import java.text.ParseException;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -20,49 +21,47 @@ public class NotificatorTest {
 
     @Test
     public void testMorningEvent7am0000() throws Exception {
-        assertThat("morning", equalTo(notificator.notificate("07:00:00")));
+        assertThat(notificator.notificate("07:00:00"), is("morning"));
     }
 
     @Test
     public void testMorningEvent8am5959() throws Exception {
-        assertThat("morning", equalTo(notificator.notificate("08:59:59")));
+        assertThat(notificator.notificate("08:59:59"), is("morning"));
     }
 
     @Test
     public void testDayEvent9am5959() throws Exception {
-        assertThat("day", equalTo(notificator.notificate("09:59:59")));
+        assertThat(notificator.notificate("09:59:59"), is("day"));
     }
 
     @Test
-    public void testDayEvent6pn5900() throws Exception {
-        assertThat("day", equalTo(notificator.notificate("18:59:00")));
-    }
+    public void testDayEvent6pm5900() throws Exception {
+        assertThat(notificator.notificate("18:59:00"), is("day"));
+}
 
     @Test
     public void testEveningEvent7pm0159() throws Exception {
-        assertThat("evening", equalTo(notificator.notificate("19:01:59")));
+        assertThat(notificator.notificate("19:01:59"), is("evening"));
     }
 
     @Test
     public void testEveningEvent10pm5959() throws Exception {
-        assertThat("evening", equalTo(notificator.notificate("22:59:59")));
+        assertThat(notificator.notificate("22:59:59"), is("evening"));
     }
 
     @Test
     public void testNightEvent11pn0100() throws Exception {
-        assertThat("night", equalTo(notificator.notificate("23:01:00")));
+        assertThat(notificator.notificate("23:01:00"), is("night"));
     }
 
     @Test
     public void testNightEvent5am5500() throws Exception {
-        assertThat("night", equalTo(notificator.notificate("05:55:00")));
+        assertThat(notificator.notificate("05:55:00"), is("night"));
     }
 
     @Test
     public void testNotificatorSetter() throws Exception {
         notificator.setTime("13:00:00");
-        assertThat("day", equalTo(notificator.notificate()));
+        assertThat(notificator.notificate(), is("day"));
     }
-
-
 }

@@ -1,7 +1,6 @@
 package com.doronenko.test1_1;
 
 import org.apache.log4j.Logger;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -77,7 +76,7 @@ public class Notificator {
             if(
                     (intervalStart.before(intervalFinish) && time.after(intervalStart) && time.before(intervalFinish))
                         || /** if timeRange pass 0:00 am another condition **/
-                    (intervalStart.after(intervalFinish) && (time.after(intervalStart) || time.before(intervalFinish))) // ночь
+                    (intervalStart.after(intervalFinish) && (time.after(intervalStart) || time.before(intervalFinish)))
                ) {
                 log.debug("TimeRange found: " + tr.getName() + " for: " + timeString);
                 log.trace("Exit from for (TimeRanges tr : TimeRanges.values())");
