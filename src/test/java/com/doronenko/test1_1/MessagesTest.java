@@ -42,7 +42,7 @@ public class MessagesTest {
                     break;
                 }
             }
-            assertEquals(true, exist);
+            assertEquals("No message found for " + tr.getName(), true, exist);
         }
     }
     

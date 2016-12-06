@@ -26,7 +26,7 @@ public class HelloWorldApp {
         ResourceBundle resourceBundle = ResourceBundle.getBundle("message/messages");
 
         log.trace("Getting current time range");
-        String message = new Notificator().notificate();
+        String message = new Notifier().inform();
 
         try {
             System.out.println(resourceBundle.getString(message));
