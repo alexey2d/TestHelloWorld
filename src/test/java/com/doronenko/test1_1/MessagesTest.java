@@ -54,8 +54,6 @@ public class MessagesTest {
     public void testResourcePropertiesRU() {
         resourceBundle = ResourceBundle.getBundle("message/messages", Locale.forLanguageTag("RU"));
 
-        Enumeration<String> messagesKeys;
-
         for (TimeRanges tr : TimeRanges.values()) {
             assertEquals("No message found for " + tr.name().toLowerCase() + " in russian resource",
                     true, resourceBundle.containsKey(tr.name().toLowerCase()));
