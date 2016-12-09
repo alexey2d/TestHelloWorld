@@ -1,4 +1,5 @@
 package com.doronenko.test1_1;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -26,7 +27,7 @@ public class MessagesTest {
      * Test enum TimeRanges values presents in resources
      */
     @Test
-    public void testResourceProperties(){
+    public void testResourceProperties() {
         for (TimeRanges tr : TimeRanges.values()) {
             assertEquals("No message found for " + tr.name().toLowerCase(),
                     true, resourceBundle.containsKey(tr.name().toLowerCase()));
@@ -37,11 +38,11 @@ public class MessagesTest {
      * Test enum TimeRanges values presents in resources
      */
     @Test
-    public void testResourcePropertiesEN(){
+    public void testResourcePropertiesEN() {
         resourceBundle = ResourceBundle.getBundle("message/messages", Locale.US);
 
         for (TimeRanges tr : TimeRanges.values()) {
-            assertEquals("No message found for " + tr.name().toLowerCase()  + " in english resource",
+            assertEquals("No message found for " + tr.name().toLowerCase() + " in english resource",
                     true, resourceBundle.containsKey(tr.name().toLowerCase()));
         }
     }
@@ -50,7 +51,7 @@ public class MessagesTest {
      * Test enum TimeRanges values presents in resources
      */
     @Test
-    public void testResourcePropertiesRU(){
+    public void testResourcePropertiesRU() {
         resourceBundle = ResourceBundle.getBundle("message/messages", Locale.forLanguageTag("RU"));
 
         Enumeration<String> messagesKeys;

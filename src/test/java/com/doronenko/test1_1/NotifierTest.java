@@ -1,18 +1,19 @@
 package com.doronenko.test1_1;
 
 import org.junit.Test;
+
 import java.text.ParseException;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
-* Class {@link com.doronenko.test1_1.NotifierTest}
-*
-* @author Alexey Doronenko
-* @version 1.0
-* @since 12/06/2016.
-*/
+ * Class {@link com.doronenko.test1_1.NotifierTest}
+ *
+ * @author Alexey Doronenko
+ * @version 1.0
+ * @since 12/06/2016.
+ */
 public class NotifierTest {
     Notifier notifier = new Notifier();
 
@@ -37,7 +38,7 @@ public class NotifierTest {
     @Test
     public void testDayEvent6pm5900() throws Exception {
         assertThat(notifier.inform("18:59:00"), is("day"));
-}
+    }
 
     @Test
     public void testEveningEvent7pm0159() throws Exception {

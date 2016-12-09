@@ -6,12 +6,12 @@ import java.text.ParseException;
 import java.util.Date;
 
 /**
-* Class {@link com.doronenko.test1_1.TimeRanges}
-*
-* @author Alexey Doronenko
-* @version 1.0
-* @since 12/06/2016.
-*/
+ * Class {@link com.doronenko.test1_1.TimeRanges}
+ *
+ * @author Alexey Doronenko
+ * @version 1.0
+ * @since 12/06/2016.
+ */
 public enum TimeRanges {
     MORNING("06:00:00"),
     DAY("09:00:00"),
